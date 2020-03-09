@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Card_Game
 {
-    public class Card : IComparable
+    public class Card : IComparable<Card>
     {
         private string name;
         private Dictionary<CardsAttributes, int> attributes;
@@ -26,9 +26,15 @@ namespace Card_Game
             };
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(Card card)
         {
-            throw new NotImplementedException();
+            if (ID > card.ID) 
+                return 1;
+
+            if (ID == card.ID) 
+                return 0;
+
+            return -1;
         }
     }
 }

@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Card_Game
 {
-    public class Card : IComparable, IComparer<Card>
+    public class Card : IComparable
     {
         private string name;
-        private int ID;
         private Dictionary<CardsAttributes, int> attributes;
         private string description;
+        public int ID { get; private set; }
 
         public Card(int ID, string name, int[] attributes, string description)
         {
@@ -24,11 +24,6 @@ namespace Card_Game
                 {CardsAttributes.Gluttony, attributes[2]},
                 {CardsAttributes.Laziness, attributes[3]},
             };
-        }
-
-        public int Compare([AllowNull] Card x, [AllowNull] Card y)
-        {
-            throw new NotImplementedException();
         }
 
         public int CompareTo(object obj)

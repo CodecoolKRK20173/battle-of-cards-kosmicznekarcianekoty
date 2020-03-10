@@ -7,16 +7,25 @@ namespace Card_Game
 {
     public class Card : IComparable<Card>
     {
-        private string name;
+       
         private Dictionary<CardsAttributes, int> attributes;
-        private string description;
         public int ID { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
+        public int this[CardsAttributes key]
+        {
+            get
+            {
+                return attributes[key];
+            }
+        }
 
         public Card(int ID, string name, int[] attributes, string description)
         {
             this.ID = ID;
-            this.name = name;
-            this.description = description;
+            Name = name;
+            Description = description;
             this.attributes = new Dictionary<CardsAttributes, int>
             {
                 {CardsAttributes.Fluffiness, attributes[0]},

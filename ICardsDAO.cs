@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Card_Game
 {
-    public interface ICardsDao
+    public interface ICardsDAO
     {
         public List<Card> GetCards();
-        public Card GetCardByID();
+        public Card GetCardByID(int ID);
 
     }
 }

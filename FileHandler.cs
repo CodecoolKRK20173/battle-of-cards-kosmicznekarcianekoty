@@ -13,7 +13,7 @@ namespace Card_Game
             List<string> data = new List<string>();
             string line;
 
-            while (reader.EndOfStream)
+            while (!reader.EndOfStream)
             {
                 line = reader.ReadLine();
                 data.Add(line);

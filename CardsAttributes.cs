@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Card_Game
 {
-    enum CardsAttributes
+    public enum CardsAttributes
     {
         Fluffiness,
         Madness,

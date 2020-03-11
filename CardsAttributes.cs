@@ -6,9 +6,9 @@ namespace Card_Game
 {
     public enum CardsAttributes
     {
-        Fluffiness,
-        Madness,
-        Gluttony,
-        Laziness
+        Fluffiness = 0,
+        Madness = 1,
+        Gluttony = 2,
+        Laziness = 3
     }
 }

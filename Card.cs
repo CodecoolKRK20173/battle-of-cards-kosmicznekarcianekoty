@@ -21,18 +21,17 @@ namespace Card_Game
             }
         }
 
-        public Card(int id, string name, int[] attributes, string description)
+        public Card(int id, string name, string description, List<int> attributes)
         {
-            this.ID = id;
+            ID = id;
             Name = name;
             Description = description;
-            this.attributes = new Dictionary<CardsAttributes, int>
+            this.attributes = new Dictionary<CardsAttributes, int> { };
+
+            for (int i = 0; i < Enum.GetNames(typeof(CardsAttributes)).Length; i++)
             {
-                {CardsAttributes.Fluffiness, attributes[0]},
-                {CardsAttributes.Madness, attributes[1]},
-                {CardsAttributes.Gluttony, attributes[2]},
-                {CardsAttributes.Laziness, attributes[3]},
-            };
+                this.attributes[(CardsAttributes)i] = attributes[i];
+            }
         }
 
         public int CompareTo(Card card)

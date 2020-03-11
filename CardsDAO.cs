@@ -35,21 +35,18 @@ namespace Card_Game
             List<string> data = FileHandler.GetFileContentAsList(filePath);
             List <Card> cards = new List<Card>();
             int index = 0;
-            string[] line;
-            int[] attributes;
+            string[] lineValues;
+            List<int> attributes = new List<int> { };
 
             foreach(string record in data)
             {
-                line = record.Split(',');
-                attributes = new int[4]
+                lineValues = record.Split(',');
+                for (int i = 2; i < Enum.GetNames(typeof(CardsAttributes)).Length+2; i++)
                 {
-                int.Parse(line[1]),
-                int.Parse(line[2]),
-                int.Parse(line[3]),
-                int.Parse(line[4]),
-                };
+                    attributes.Add(int.Parse(lineValues[i]));
+                }
 
-                cards.Add(new Card(index++, line[0], attributes, line[5]));
+                cards.Add(new Card(index++, lineValues[0], lineValues[1], attributes));
             }
 
             return cards;

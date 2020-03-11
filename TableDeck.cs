@@ -1,29 +1,38 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Card_Game
 {
     public class TableDeck : Deck
     {
-        private List<Player> Players { get; set; }
         private ICardsDAO FullDeck { get; set; }
+        private Random Rand = new Random();
         public TableDeck(ICardsDAO fullDeck)
         {
             FullDeck = fullDeck;
             Cards = FullDeck.GetCards();
         }
-        public void DealCards()
+        public void Shuffle()
         {
-            var cardsPerPlayer = Cards.Count/Players.Count;
-
-            for(int i = 0; i < cardsPerPlayer; i++)
+            for (int n = Cards.Count - 1; n > 0; --n)
             {
-                foreach(var player in Players)
-                {
-                    var lastCard = Cards.Count -1;
-                    player.Cards.Add(Cards[lastCard]);
-                    Cards.RemoveAt(lastCard);
-                }
-             }   
+                int k = Rand.Next(n+1);
+                Card temp = Cards[n];
+                Cards[n] = Cards[k];
+                Cards[k] = temp;
+            }
+        }
+        public List<Card> GetTopCards(int amount)
+        {
+            return (List<Card>)Cards.Skip(Cards.Count - amount);
+        }
+        public void RemoveTopCards(int amount)
+        {
+            for(int i=0; i<amount; i++)
+            {
+                Cards.RemoveAt(Cards.Count -1);
+            }
         }
     }
 }

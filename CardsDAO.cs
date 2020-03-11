@@ -19,9 +19,9 @@ namespace Card_Game
             }
         }
 
-        public Card GetCardByID(int ID)
+        public Card GetCardByID(int id)
         {
-            return Cards.FirstOrDefault(x => x.ID == ID);
+            return Cards.FirstOrDefault(x => x.ID == id);
         }
 
         public List<Card> GetCards()

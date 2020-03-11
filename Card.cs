@@ -21,9 +21,9 @@ namespace Card_Game
             }
         }
 
-        public Card(int ID, string name, int[] attributes, string description)
+        public Card(int id, string name, int[] attributes, string description)
         {
-            this.ID = ID;
+            this.ID = id;
             Name = name;
             Description = description;
             this.attributes = new Dictionary<CardsAttributes, int>

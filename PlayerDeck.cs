@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Card_Game
@@ -13,16 +12,9 @@ namespace Card_Game
         {
             Cards.RemoveAt(Cards.Count -1);
         }
-        public void AddCardsToDeckBottom(Card card)
+        public void AddCardToDeckBottom(Card card)
         {
             Cards.Insert(0,card);
-        }
-        public void AddCardsToDeckBottom(List<Card> wonCards)
-        {
-            foreach(var card in wonCards)
-            {
-                Cards.Insert(0, card);
-            }
         }
     }
 }

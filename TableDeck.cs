@@ -7,7 +7,7 @@ namespace Card_Game
     public class TableDeck : Deck
     {
         private ICardsDAO FullDeck { get; set; }
-        private Random Rand = new Random();
+        public TableDeck() {}
         public TableDeck(ICardsDAO fullDeck)
         {
             FullDeck = fullDeck;
@@ -15,9 +15,11 @@ namespace Card_Game
         }
         public void Shuffle()
         {
+            Random rand = new Random();
+
             for (int n = Cards.Count - 1; n > 0; --n)
             {
-                int k = Rand.Next(n+1);
+                int k = rand.Next(n+1);
                 Card temp = Cards[n];
                 Cards[n] = Cards[k];
                 Cards[k] = temp;

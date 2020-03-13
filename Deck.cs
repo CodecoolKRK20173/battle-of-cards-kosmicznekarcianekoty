@@ -20,14 +20,11 @@ namespace Card_Game
         }
         public bool IsTie(List<Card> selectedCards, CardsAttributes attribute)
         {
-            var highestCard = selectedCards.OrderBy(card => card[attribute]).First();
+            var highestCard = GetHighestCard(selectedCards, attribute);
             
-            for (int i=1; i<selectedCards.Count; i++)
+            if(selectedCards[1][attribute] == highestCard[attribute])
             {
-                if(selectedCards[i][attribute] == highestCard[attribute])
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }

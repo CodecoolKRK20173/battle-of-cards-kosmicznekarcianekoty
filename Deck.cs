@@ -22,11 +22,7 @@ namespace Card_Game
         {
             var highestCard = GetHighestCard(selectedCards, attribute);
             
-            if(selectedCards[1][attribute] == highestCard[attribute])
-            {
-                return true;
-            }
-            return false;
+            return selectedCards[1][attribute] == highestCard[attribute];
         }
         public Card GetHighestCard(List<Card> selectedCards, CardsAttributes attribute)
         {

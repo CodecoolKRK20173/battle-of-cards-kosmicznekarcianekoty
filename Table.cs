@@ -121,6 +121,18 @@ namespace Card_Game
                 players = playersInNewOrder;
             }
         }
+
+        public bool GameIsOver()
+        {
+            foreach (Player player in players)
+            {
+                if (player.PlayerDeck.IsEmpty())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
 

@@ -141,5 +141,10 @@ namespace Card_Game
             return winner;
         }
 
+        public TableDeck GetRoundDeck()
+        {
+            return roundDeck;
+        }
+
     }
 }

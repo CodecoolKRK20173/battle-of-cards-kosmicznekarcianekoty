@@ -16,6 +16,14 @@ namespace Card_Game
             Console.WriteLine(message);
         }
 
+        public void PrintDeck(TableDeck deckToPrint)
+        {
+            foreach (Card card in deckToPrint.Cards)
+            {
+                PrintCard(card);
+            }
+        }
+
         public void PrintCard(Card card)
         {
             PrintEmptyLine();

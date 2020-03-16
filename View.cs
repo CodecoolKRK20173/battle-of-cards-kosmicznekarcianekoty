@@ -1,5 +1,5 @@
 using System;
-using System.Data;
+using System.Collections.Generic;
 
 namespace Card_Game
 {
@@ -19,15 +19,17 @@ namespace Card_Game
         public void PrintCard(Card card)
         {
             PrintEmptyLine();
-            PrintRowWithNoFrame(card.Owner.Name);
+            string nameToPrint = $"{card.Owner.Name}'s card:";
+            PrintRowWithNoFrame(nameToPrint);
             PrintLine();
             PrintRow(card.Name);
             PrintLine();
             PrintRow("");
-            PrintRow("Fluffiness: ");
-            PrintRow("Madness: ");
-            PrintRow("Gluttony: ");
-            PrintRow("Laziness: ");
+            foreach (KeyValuePair<CardsAttributes, int> attribute in card.attributes)
+            {
+                string textToPrint = $"{attribute.Key}: {attribute.Value}";
+                PrintRow(textToPrint);
+            }
             PrintRow("");
             PrintRow(card.Description);
             PrintLine();

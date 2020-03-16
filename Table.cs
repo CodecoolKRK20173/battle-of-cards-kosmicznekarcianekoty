@@ -68,9 +68,8 @@ namespace Card_Game
             tableDeck.RemoveTopCards(cardsToRemove);
         }
 
-        public void GameRound(CardsAttributes chosenAttribute)
+        public void EndOfRound(CardsAttributes chosenAttribute)
         {
-            PlayersPlayCard();
             if (roundDeck.IsTie(chosenAttribute))
             {
                 CopyCardsToDeckFromDeck(benchDeck, roundDeck);

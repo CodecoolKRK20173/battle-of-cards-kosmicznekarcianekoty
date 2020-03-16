@@ -12,7 +12,7 @@ namespace Card_Game
         public int ID { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public Player Owner { get; set; } = null;
+        public Player Owner { get; private set; }
 
         public int this[CardsAttributes key]
         {

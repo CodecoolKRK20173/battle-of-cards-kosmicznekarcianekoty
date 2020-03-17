@@ -10,6 +10,7 @@ namespace Card_Game
         private TableDeck roundDeck;
         private TableDeck benchDeck;
         private Player roundWinner;
+        private Dictionary<Card, Player> cardOwners;
 
 
         public Table(params string[] playersNames) // first inserted player will start the game
@@ -18,6 +19,7 @@ namespace Card_Game
             CreateRoundDeck();
             CreateBenchDeck();
             CreatePlayers(playersNames);
+            CreateCardOwners();
         }
 
         private void CreateTableDeck()
@@ -44,6 +46,14 @@ namespace Card_Game
                 Player newPlayer = new Player();
                 newPlayer.Name = name;
                 players.Add(newPlayer);
+            }
+        }
+
+        private void CreateCardOwners()
+        {
+            foreach (Card card in tableDeck.Cards)
+            {
+                cardOwners.Add(card, null);
             }
         }
         

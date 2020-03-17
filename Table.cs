@@ -24,14 +24,14 @@ namespace Card_Game
 
         private void CreateTableDeck()
         {
-            string path = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory
-            ICardsDAO fullDeck = GetProperDAO(path);
+            string fileName = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory
+            ICardsDAO fullDeck = GetProperDAO(fileName);
             tableDeck = new TableDeck(fullDeck);
         }
 
-        private ICardsDAO GetProperDAO(string path)
+        private ICardsDAO GetProperDAO(string fileName)
         {
-            string extension = Path.GetExtension(path);
+            string extension = Path.GetExtension(fileName);
             switch (extension)
             {
                 case "csv":

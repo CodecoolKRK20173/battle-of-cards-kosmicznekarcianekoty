@@ -36,5 +36,10 @@ namespace Card_Game
                 Cards.RemoveAt(Cards.Count -1);
             }
         }
+
+        public void ChangeCardsOwner(Player owner)
+        {
+            foreach (Card card in Cards) card.ChangeOwner(owner);
+        }
     }
 }

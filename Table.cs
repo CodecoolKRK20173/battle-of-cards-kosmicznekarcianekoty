@@ -67,7 +67,6 @@ namespace Card_Game
                  {
                     List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
                     player.AddCardToLocalDeck(oneCardToDeal[0]);
-
                     oneCardToDeal[0].ChangeOwner(player);
                     tableDeck.RemoveTopCards(1);
                  }
@@ -114,8 +113,16 @@ namespace Card_Game
         private void CopyCardsToWinnerDeck()
         {
             CopyCardsToDeckFromDeck(roundDeck, benchDeck);
-            roundDeck.ChangeCardsOwner(roundWinner);
+            AssignOwnerToDeckOfCards(roundWinner, roundDeck);
             CopyCardsToDeckFromDeck(roundWinner.localDeck, roundDeck);
+        }
+
+        private void AssignOwnerToDeckOfCards(Player owner, TableDeck deck)
+        {
+            foreach (Card card in deck.Cards)
+            {
+                cardOwners[card] = owner;
+            }
         }
 
         private void SetStartingPlayer()

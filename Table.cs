@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace Card_Game
@@ -24,8 +24,21 @@ namespace Card_Game
 
         private void CreateTableDeck()
         {
-            ICardsDAO fullDeck = new CardsDAO();
+            string path = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory
+            ICardsDAO fullDeck = GetProperDAO(path);
             tableDeck = new TableDeck(fullDeck);
+        }
+
+        private ICardsDAO GetProperDAO(string path)
+        {
+            string extension = Path.GetExtension(path);
+            switch (extension)
+            {
+                case "csv":
+                    return new CardsDAO();
+                default:
+                    throw new FileNotFoundException("Not possible to upload cards.");
+            }
         }
 
         private void CreateRoundDeck()

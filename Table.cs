@@ -11,6 +11,7 @@ namespace Card_Game
         private TableDeck benchDeck;
         private Player roundWinner;
 
+
         public Table(params string[] playersNames) // first inserted player will start the game
         {
             CreateTableDeck();
@@ -41,7 +42,7 @@ namespace Card_Game
             foreach (string name in playersNames)
             {
                 Player newPlayer = new Player();
-                newPlayer.Name = name; // let's add 'name' parameter to Player's consturctor?
+                newPlayer.Name = name;
                 players.Add(newPlayer);
             }
         }
@@ -55,7 +56,8 @@ namespace Card_Game
                  foreach (Player player in players)
                  {
                     List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
-                    player.PlayerDeck.AddCardToDeckBottom(oneCardToDeal[0]);
+                    player.AddCardToLocalDeck(oneCardToDeal[0]);
+
                     oneCardToDeal[0].ChangeOwner(player);
                     tableDeck.RemoveTopCards(1);
                  }
@@ -88,8 +90,8 @@ namespace Card_Game
         {
             foreach (Player player in players)
             {
-                List<Card> oneCardToPlay = player.PlayerDeck.GetTopCards(1);
-                player.PlayerDeck.RemoveTopCard();
+                List<Card> oneCardToPlay = player.localDeck.GetTopCards(1);
+                player.RemoveCardFromePlayerCards();
                 roundDeck.AddCardsToDeckBottom(oneCardToPlay);
             }
         }
@@ -103,7 +105,7 @@ namespace Card_Game
         {
             CopyCardsToDeckFromDeck(roundDeck, benchDeck);
             roundDeck.ChangeCardsOwner(roundWinner);
-            CopyCardsToDeckFromDeck(roundWinner.PlayerDeck, roundDeck);
+            CopyCardsToDeckFromDeck(roundWinner.localDeck, roundDeck);
         }
 
         private void SetStartingPlayer()
@@ -120,7 +122,7 @@ namespace Card_Game
         {
             foreach (Player player in players)
             {
-                if (player.PlayerDeck.IsEmpty())
+                if (player.localDeck.IsEmpty())
                 {
                     return true;
                 }
@@ -133,7 +135,7 @@ namespace Card_Game
             Player winner = players[0];
             foreach (Player player in players)
             {
-                if (player.PlayerDeck.Cards.Count > winner.PlayerDeck.Cards.Count)
+                if (player.GetNumberOfCardsInPlayersDeck() > winner.GetNumberOfCardsInPlayersDeck())
                 {
                     winner = player;
                 }

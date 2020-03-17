@@ -67,7 +67,7 @@ namespace Card_Game
                  {
                     List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
                     player.AddCardToLocalDeck(oneCardToDeal[0]);
-                    oneCardToDeal[0].ChangeOwner(player);
+                    AssignOwnerToCard(player, oneCardToDeal[0]);
                     tableDeck.RemoveTopCards(1);
                  }
             }
@@ -88,7 +88,7 @@ namespace Card_Game
             else
             {
                 Card highestCard = roundDeck.GetHighestCard(chosenAttribute);
-                roundWinner = highestCard.Owner;
+                AssignOwnerToCard(roundWinner, highestCard);
                 CopyCardsToWinnerDeck();
                 SetStartingPlayer();
             }
@@ -115,6 +115,11 @@ namespace Card_Game
             CopyCardsToDeckFromDeck(roundDeck, benchDeck);
             AssignOwnerToDeckOfCards(roundWinner, roundDeck);
             CopyCardsToDeckFromDeck(roundWinner.localDeck, roundDeck);
+        }
+
+        private void AssignOwnerToCard(Player owner, Card card)
+        {
+            cardOwners[card] = owner;
         }
 
         private void AssignOwnerToDeckOfCards(Player owner, TableDeck deck)

@@ -1,21 +1,29 @@
-using System.Collections.Generic;
-
 
 namespace Card_Game
 {
-    public class Player 
+    public class Player : IPlayer
     {
-
-        List<Card> Cards {get; set;}
+        public string Name { get; set; }
+        // public List<Card> Cards {get; private set;}
+        public PlayerDeck localDeck;
         /*----*/
         public Player()
         {
-            Cards = new List<Card>();
+            localDeck = new PlayerDeck();
         }
         /*-----*/
 
-        public void AddCardToPlayerCards(Card SingleCard) => Cards.Insert(0, SingleCard);
-        public void RemoveCardFromePlayerCards(Card SingleCard) => new PlayerDeck().RemoveTopCard();
+        public void AddCardToPlayerCards(Card SingleCard)
+        {
+            if (SingleCard is null)
+            {
+                throw new System.ArgumentNullException(nameof(SingleCard));
+            }
+            localDeck.AddCardToDeckBottom(SingleCard);
+        }
 
+        public void AddCardToLocalDeck(Card SingleCard) => localDeck.AddCardToDeckBottom(SingleCard);
+        public void RemoveCardFromePlayerCards(Card SingleCard) => localDeck.RemoveTopCard();
+        public int GetNumberOfCardsInPlayersDeck() => localDeck.GetPlayerDeckCount();
     }
 }

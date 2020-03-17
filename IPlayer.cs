@@ -6,7 +6,7 @@ namespace Card_Game
         string Name {get; set;}
         void AddCardToPlayerCards(Card SingleCard);
         void AddCardToLocalDeck(Card SingleCard);
-        void RemoveCardFromePlayerCards(Card SingleCard);
+        void RemoveCardFromePlayerCards();
         int GetNumberOfCardsInPlayersDeck();
     }
 }

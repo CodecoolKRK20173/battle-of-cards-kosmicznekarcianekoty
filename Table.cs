@@ -123,7 +123,7 @@ namespace Card_Game
             cardOwners[card] = owner;
         }
 
-        private void AssignOwnerToDeckOfCards(Player owner, TableDeck deck)
+        private void AssignOwnerToDeckOfCards(Player owner, Deck deck)
         {
             foreach (Card card in deck.Cards)
             {

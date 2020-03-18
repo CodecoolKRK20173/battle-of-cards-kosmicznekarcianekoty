@@ -7,8 +7,8 @@ namespace Card_Game
     {
         private List<Player> players;
         private TableDeck tableDeck;
-        private TableDeck roundDeck;
-        private TableDeck benchDeck;
+        private TableDeck roundDeck = new TableDeck();
+        private TableDeck benchDeck = new TableDeck();
         private Player roundWinner;
         private Dictionary<Card, Player> cardOwners;
 
@@ -16,8 +16,6 @@ namespace Card_Game
         public Table(params string[] playersNames) // first inserted player will start the game
         {
             CreateTableDeck();
-            CreateRoundDeck();
-            CreateBenchDeck();
             CreatePlayers(playersNames);
             CreateCardOwners();
         }
@@ -39,16 +37,6 @@ namespace Card_Game
                 default:
                     throw new FileNotFoundException("Not possible to upload cards.");
             }
-        }
-
-        private void CreateRoundDeck()
-        {
-            roundDeck = new TableDeck();
-        }
-
-        private void CreateBenchDeck()
-        {
-            benchDeck = new TableDeck();
         }
 
         private void CreatePlayers(string[] playersNames)

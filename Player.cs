@@ -22,6 +22,7 @@ namespace Card_Game
             localDeck.AddCardToDeckBottom(SingleCard);
         }
         public void RemoveCardFromePlayerCards() => localDeck.RemoveTopCard();
+        public void GetTopCardFromPlayerCards() => localDeck.GetTopCard();
         public int GetNumberOfCardsInPlayersDeck() => localDeck.GetPlayerDeckCount();
     }
 }

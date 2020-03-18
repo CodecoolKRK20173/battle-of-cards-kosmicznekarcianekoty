@@ -16,5 +16,9 @@ namespace Card_Game
         {
             Cards.Insert(0,card);
         }
+        public int GetPlayerDeckCount()
+        {
+            return Cards.Count();            
+        }
     }
 }

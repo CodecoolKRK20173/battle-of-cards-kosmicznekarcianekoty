@@ -34,22 +34,37 @@ namespace Card_Game
             string filePath = "files/cards.csv";
             List<string> data = FileHandler.GetFileContentAsList(filePath);
             List <Card> cards = new List<Card>();
-            int index = 0;
-            string[] lineValues;
-            List<int> attributes = new List<int> { };
+            int id = 0;
 
-            foreach(string record in data)
+            foreach (string record in data)
             {
-                lineValues = record.Split(',');
-                for (int i = 2; i < Enum.GetNames(typeof(CardsAttributes)).Length+2; i++)
-                {
-                    attributes.Add(int.Parse(lineValues[i]));
-                }
 
-                cards.Add(new Card(index++, lineValues[0], lineValues[1], attributes));
+                cards.Add(ReadCard(record, id++));
             }
 
             return cards;
+        }
+
+        private Card ReadCard(string record, int id)
+        {
+            var lineValues = record.Split(',');
+            string cardName = lineValues[0];
+            string cardDescription = lineValues[1];
+            var attributes = ReadAttributes(lineValues);
+
+            return new Card(id, cardName, cardDescription, attributes);
+        }
+
+        private List<int> ReadAttributes(string[] lineValues)
+        {
+            List<int> attributes = new List<int>();
+
+            for (int i = 2; i < Enum.GetNames(typeof(CardsAttributes)).Length + 2; i++)
+            {
+                attributes.Add(int.Parse(lineValues[i]));
+            }
+
+            return attributes;
         }
     }
 }

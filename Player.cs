@@ -1,4 +1,3 @@
-
 namespace Card_Game
 {
     public class Player : IPlayer
@@ -21,10 +20,7 @@ namespace Card_Game
             }
             localDeck.AddCardToDeckBottom(SingleCard);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> c2e9c8715694887ca13f4773efa617b89b4bc992
+        public void GetTheTopCardFromPlayerCards() => localDeck.GetTopCard();
         public void RemoveCardFromePlayerCards() => localDeck.RemoveTopCard();
         public int GetNumberOfCardsInPlayersDeck() => localDeck.GetPlayerDeckCount();
     }

@@ -67,7 +67,7 @@ namespace Card_Game
                  foreach (Player player in players)
                  {
                     List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
-                    player.AddCardToLocalDeck(oneCardToDeal[0]);
+                    player.AddCardToPlayerCards(oneCardToDeal[0]);
                     AssignOwnerToCard(player, oneCardToDeal[0]);
                     tableDeck.RemoveTopCards(1);
                  }
@@ -100,13 +100,13 @@ namespace Card_Game
         {
             foreach (Player player in players)
             {
-                List<Card> oneCardToPlay = player.localDeck.GetTopCards(1);
+                List<Card> oneCardToPlay = player.GetTopCardFromPlayerCards();
                 player.RemoveCardFromePlayerCards();
                 roundDeck.AddCardsToDeckBottom(oneCardToPlay);
             }
         }
 
-        private void CopyCardsToDeckFromDeck(TableDeck toDeck, TableDeck fromDeck)
+        private void CopyCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
         {
             toDeck.AddCardsToDeckBottom(fromDeck.Cards);
         }

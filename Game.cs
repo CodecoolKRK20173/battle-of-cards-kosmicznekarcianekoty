@@ -23,5 +23,11 @@ namespace Card_Game
             }
             view.Print($"Welcome {string.Concat(playersNames)}!");
         }
+
+        public void InitializeGame()
+        {
+            gameTable = new Table(playersNames);
+            view.Print($"Created {playersNames.Length} players");
+        }
     }
 }

@@ -151,15 +151,7 @@ namespace Card_Game
 
         public Player GetWinner()
         {
-            Player winner = players[0];
-            foreach (Player player in players)
-            {
-                if (player.GetNumberOfCardsInPlayersDeck() > winner.GetNumberOfCardsInPlayersDeck())
-                {
-                    winner = player;
-                }
-            }
-            return winner;
+            return players.OrderByDescending(player => player.GetNumberOfCardsInPlayersDeck()).First();
         }
     }
 }

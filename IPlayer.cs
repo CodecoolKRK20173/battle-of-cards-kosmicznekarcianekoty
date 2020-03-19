@@ -1,4 +1,3 @@
-
 namespace Card_Game
 {
     interface IPlayer

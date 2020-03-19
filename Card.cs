@@ -12,6 +12,7 @@ namespace Card_Game
         public int ID { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public Player Owner { get; private set; }
 
         public int this[CardsAttributes key]
         {
@@ -43,6 +44,11 @@ namespace Card_Game
                 return 0;
 
             return -1;
+        }
+
+        public void ChangeOwner (Player owner)
+        {
+            Owner = owner;
         }
     }
 }

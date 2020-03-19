@@ -100,7 +100,7 @@ namespace Card_Game
             roundDeck.Cards.Clear();
         }
         
-        private void PlayersPlayCard()
+        public void PlayersPlayCard()
         {
             foreach (Player player in players)
             {

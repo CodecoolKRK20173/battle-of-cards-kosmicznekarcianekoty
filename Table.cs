@@ -6,11 +6,11 @@ namespace Card_Game
 {
     public class Table
     {
+        public Player RoundWinner { get; private set; }
         private List<Player> players;
         private TableDeck tableDeck;
         public TableDeck roundDeck { get; private set; }
         private TableDeck benchDeck;
-        private Player roundWinner;
         private Dictionary<Card, Player> cardOwners = new Dictionary<Card, Player>();
 
 
@@ -21,6 +21,7 @@ namespace Card_Game
             benchDeck = new TableDeck();
             CreatePlayers(playersNames);
             CreateCardOwners();
+            RoundWinner = players[0];
         }
 
         private void CreateTableDeck()
@@ -92,7 +93,7 @@ namespace Card_Game
             else
             {
                 Card highestCard = roundDeck.GetHighestCard(chosenAttribute);
-                AssignOwnerToCard(roundWinner, highestCard);
+                AssignOwnerToCard(RoundWinner, highestCard);
                 CopyCardsToWinnerDeck();
                 SetStartingPlayer();
             }
@@ -117,8 +118,8 @@ namespace Card_Game
         private void CopyCardsToWinnerDeck()
         {
             CopyCardsToDeckFromDeck(roundDeck, benchDeck);
-            AssignOwnerToDeckOfCards(roundWinner, roundDeck);
-            CopyCardsToDeckFromDeck(roundWinner.localDeck, roundDeck);
+            AssignOwnerToDeckOfCards(RoundWinner, roundDeck);
+            CopyCardsToDeckFromDeck(RoundWinner.localDeck, roundDeck);
         }
 
         private void AssignOwnerToCard(Player owner, Card card)
@@ -136,11 +137,11 @@ namespace Card_Game
 
         private void SetStartingPlayer()
         {
-            if (roundWinner != players[0])
+            if (RoundWinner != players[0])
             {
-                int winnerIndex = players.IndexOf(roundWinner);
+                int winnerIndex = players.IndexOf(RoundWinner);
                 players.RemoveAt(winnerIndex);
-                players.Insert(0, roundWinner);
+                players.Insert(0, RoundWinner);
             }
         }
 

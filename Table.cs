@@ -103,7 +103,7 @@ namespace Card_Game
         {
             foreach (Player player in players)
             {
-                List<Card> oneCardToPlay = player.GetTopCardFromPlayerCards();
+                List<Card> oneCardToPlay = new List<Card> { player.GetTopCardFromPlayerCards() };
                 player.RemoveCardFromPlayerCards();
                 roundDeck.AddCardsToDeckBottom(oneCardToPlay);
             }

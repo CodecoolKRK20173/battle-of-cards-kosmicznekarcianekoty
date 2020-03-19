@@ -33,9 +33,9 @@ namespace Card_Game
             PrintRow(card.Name);
             PrintLine();
             PrintRow("");
-            foreach (KeyValuePair<CardsAttributes, int> attribute in card.attributes)
+            foreach (CardsAttributes attribute in (CardsAttributes[])Enum.GetValues(typeof(CardsAttributes)))
             {
-                string textToPrint = $"{attribute.Key}: {attribute.Value}";
+                string textToPrint = $"{attribute}: {card[attribute]}";
                 PrintRow(textToPrint);
             }
             PrintRow("");

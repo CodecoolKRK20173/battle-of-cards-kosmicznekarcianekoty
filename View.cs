@@ -39,9 +39,10 @@ namespace Card_Game
                 PrintRow(textToPrint);
             }
             PrintRow("");
-            PrintRow(card.Description);
             PrintLine();
+            Print(card.Description);
         }
+
 
         private void PrintLine()
         {

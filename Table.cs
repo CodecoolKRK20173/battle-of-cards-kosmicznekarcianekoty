@@ -7,8 +7,8 @@ namespace Card_Game
     {
         private List<Player> players;
         private TableDeck tableDeck;
-        private TableDeck roundDeck = new TableDeck();
-        private TableDeck benchDeck = new TableDeck();
+        public TableDeck roundDeck { get; private set; }
+        private TableDeck benchDeck;
         private Player roundWinner;
         private Dictionary<Card, Player> cardOwners;
 
@@ -16,6 +16,8 @@ namespace Card_Game
         public Table(params string[] playersNames) // first inserted player will start the game
         {
             CreateTableDeck();
+            roundDeck = new TableDeck();
+            benchDeck = new TableDeck();
             CreatePlayers(playersNames);
             CreateCardOwners();
         }
@@ -165,11 +167,5 @@ namespace Card_Game
             }
             return winner;
         }
-
-        public TableDeck GetRoundDeck()
-        {
-            return roundDeck;
-        }
-
     }
 }

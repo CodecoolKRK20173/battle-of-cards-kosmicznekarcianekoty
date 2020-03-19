@@ -25,9 +25,9 @@ namespace Card_Game
                 Cards[k] = temp;
             }
         }
-        public List<Card> GetTopCards(int amount)
+        public Card GetTopCard()
         {
-            return (List<Card>)Cards.Skip(Cards.Count - amount);
+            return Cards[0];
         }
         public void RemoveTopCards(int amount)
         {

@@ -70,9 +70,9 @@ namespace Card_Game
             {
                  foreach (Player player in players)
                  {
-                    List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
-                    player.AddCardToPlayerCards(oneCardToDeal[0]);
-                    AssignOwnerToCard(player, oneCardToDeal[0]);
+                    Card oneCardToDeal = tableDeck.GetTopCard();
+                    player.AddCardToPlayerCards(oneCardToDeal);
+                    AssignOwnerToCard(player, oneCardToDeal);
                     tableDeck.RemoveTopCards(1);
                  }
             }

@@ -1,27 +1,27 @@
-using System.Collections.Generic;
-
 
 namespace Card_Game
 {
-    public class Player 
+    public class Player : IPlayer
     {
-        bool isPlayerInHand = false;  // na true, jeśli prowadzi grę
-        bool isPlayerInGame = false; // na true, jeśli jeszcze w grze
-        List<Card> Cards {get; set;}
+        public string Name { get; set; }
+        // public List<Card> Cards {get; private set;}
+        public PlayerDeck localDeck;
         /*----*/
         public Player()
         {
-            Cards = new List<Card>();
+            localDeck = new PlayerDeck();
         }
         /*-----*/
-        public bool GetIsPlayerInHand() => isPlayerInHand; 
-        internal void ChangeIsPlayerInHand() => isPlayerInHand = true;
 
-        public bool GetIsPlayerInGame() => isPlayerInGame;
-        public void ChangeIsPlayerInGame() => isPlayerInGame = true;
-
-        public void AddCardToPlayerCards(Card SingleCard) => Cards.Insert(0, SingleCard);
-        public void RemoveCardFromePlayerCards(Card SingleCard) => new PlayerDeck().RemoveTopCard();
-        public bool CheckIfLoose(List<Card> Cards) => (Cards.Count < 1) ? true : false;
+        public void AddCardToPlayerCards(Card SingleCard)
+        {
+            if (SingleCard is null)
+            {
+                throw new System.ArgumentNullException(nameof(SingleCard));
+            }
+            localDeck.AddCardToDeckBottom(SingleCard);
+        }
+        public void RemoveCardFromePlayerCards() => localDeck.RemoveTopCard();
+        public int GetNumberOfCardsInPlayersDeck() => localDeck.GetPlayerDeckCount();
     }
 }

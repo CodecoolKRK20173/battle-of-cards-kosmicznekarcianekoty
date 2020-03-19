@@ -11,7 +11,7 @@ namespace Card_Game
         public TableDeck roundDeck { get; private set; }
         private TableDeck benchDeck;
         private Player roundWinner;
-        private Dictionary<Card, Player> cardOwners;
+        private Dictionary<Card, Player> cardOwners = new Dictionary<Card, Player>();
 
 
         public Table(params string[] playersNames) // first inserted player will start the game

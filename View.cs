@@ -24,6 +24,14 @@ namespace Card_Game
             }
         }
 
+        public void PrintAttributes()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                Print($"{i}. {(CardsAttributes)i-1}");
+            }
+        }
+
         public void PrintCard(Card card, Dictionary<Card, Player> owners)
         {
             PrintEmptyLine();
@@ -77,5 +85,7 @@ namespace Card_Game
                 return text.PadRight(cardWidth - (cardWidth - text.Length) / 2).PadLeft(cardWidth);
             }
         }
+
+
     }
 }

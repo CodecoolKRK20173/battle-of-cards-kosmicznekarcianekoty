@@ -5,7 +5,7 @@ namespace Card_Game
 {
     public abstract class Deck
     {
-        public List<Card> Cards { get; set; }
+        public List<Card> Cards { get; internal set; } = new List<Card> ();
         public bool IsEmpty()
         {
             if(Cards.Count < 1)

@@ -35,7 +35,7 @@ namespace Card_Game
             string extension = Path.GetExtension(fileName);
             switch (extension)
             {
-                case "csv":
+                case ".csv":
                     return new CardsDAO();
                 default:
                     throw new FileNotFoundException("Not possible to upload cards.");

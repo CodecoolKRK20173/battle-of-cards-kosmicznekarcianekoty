@@ -16,18 +16,18 @@ namespace Card_Game
             Console.WriteLine(message);
         }
 
-        public void PrintDeck(TableDeck deckToPrint)
+        public void PrintDeck(TableDeck deckToPrint, Dictionary<Card, Player> owners)
         {
             foreach (Card card in deckToPrint.Cards)
             {
-                PrintCard(card);
+                PrintCard(card, owners);
             }
         }
 
-        public void PrintCard(Card card)
+        public void PrintCard(Card card, Dictionary<Card, Player> owners)
         {
             PrintEmptyLine();
-            string nameToPrint = $"{card.Owner.Name}'s card:";
+            string nameToPrint = $"{owners[card].Name}'s card:";
             PrintRowWithNoFrame(nameToPrint);
             PrintLine();
             PrintRow(card.Name);

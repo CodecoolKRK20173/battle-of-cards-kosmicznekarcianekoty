@@ -33,7 +33,7 @@ namespace Card_Game
         {
             for(int i=0; i<amount; i++)
             {
-                Cards.RemoveAt(Cards.Count -1);
+                Cards.RemoveAt(0);
             }
         }
 

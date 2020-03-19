@@ -7,12 +7,11 @@ namespace Card_Game
     public class Table
     {
         public Player RoundWinner { get; private set; }
+        public Dictionary<Card, Player> CardOwners { get; private set; } = new Dictionary<Card, Player>();
         private List<Player> players;
         private TableDeck tableDeck;
         public TableDeck roundDeck { get; private set; }
         private TableDeck benchDeck;
-        private Dictionary<Card, Player> cardOwners = new Dictionary<Card, Player>();
-
 
         public Table(params string[] playersNames) // first inserted player will start the game
         {
@@ -58,7 +57,7 @@ namespace Card_Game
         {
             foreach (Card card in tableDeck.Cards)
             {
-                cardOwners.Add(card, null);
+                CardOwners.Add(card, null);
             }
         }
         
@@ -124,14 +123,14 @@ namespace Card_Game
 
         private void AssignOwnerToCard(Player owner, Card card)
         {
-            cardOwners[card] = owner;
+            CardOwners[card] = owner;
         }
 
         private void AssignOwnerToDeckOfCards(Player owner, Deck deck)
         {
             foreach (Card card in deck.Cards)
             {
-                cardOwners[card] = owner;
+                CardOwners[card] = owner;
             }
         }
 

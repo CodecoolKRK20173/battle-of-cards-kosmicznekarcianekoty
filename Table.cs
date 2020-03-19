@@ -8,15 +8,15 @@ namespace Card_Game
     {
         public Player RoundWinner { get; private set; }
         public Dictionary<Card, Player> CardOwners { get; private set; } = new Dictionary<Card, Player>();
+        public TableDeck RoundDeck { get; private set; }
         private List<Player> players;
         private TableDeck tableDeck;
-        public TableDeck roundDeck { get; private set; }
         private TableDeck benchDeck;
 
         public Table(params string[] playersNames) // first inserted player will start the game
         {
             CreateTableDeck();
-            roundDeck = new TableDeck();
+            RoundDeck = new TableDeck();
             benchDeck = new TableDeck();
             CreatePlayers(playersNames);
             CreateCardOwners();
@@ -85,18 +85,18 @@ namespace Card_Game
 
         public void EndOfRound(CardsAttributes chosenAttribute)
         {
-            if (roundDeck.IsTie(chosenAttribute))
+            if (RoundDeck.IsTie(chosenAttribute))
             {
-                CopyCardsToDeckFromDeck(benchDeck, roundDeck);
+                CopyCardsToDeckFromDeck(benchDeck, RoundDeck);
             }
             else
             {
-                Card highestCard = roundDeck.GetHighestCard(chosenAttribute);
+                Card highestCard = RoundDeck.GetHighestCard(chosenAttribute);
                 AssignOwnerToCard(RoundWinner, highestCard);
                 CopyCardsToWinnerDeck();
                 SetStartingPlayer();
             }
-            roundDeck.Cards.Clear();
+            RoundDeck.Cards.Clear();
         }
         
         public void PlayersPlayCard()
@@ -105,7 +105,7 @@ namespace Card_Game
             {
                 List<Card> oneCardToPlay = new List<Card> { player.GetTopCardFromPlayerCards() };
                 player.RemoveCardFromPlayerCards();
-                roundDeck.AddCardsToDeckBottom(oneCardToPlay);
+                RoundDeck.AddCardsToDeckBottom(oneCardToPlay);
             }
         }
 
@@ -116,9 +116,9 @@ namespace Card_Game
 
         private void CopyCardsToWinnerDeck()
         {
-            CopyCardsToDeckFromDeck(roundDeck, benchDeck);
-            AssignOwnerToDeckOfCards(RoundWinner, roundDeck);
-            CopyCardsToDeckFromDeck(RoundWinner.localDeck, roundDeck);
+            CopyCardsToDeckFromDeck(RoundDeck, benchDeck);
+            AssignOwnerToDeckOfCards(RoundWinner, RoundDeck);
+            CopyCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
         }
 
         private void AssignOwnerToCard(Player owner, Card card)

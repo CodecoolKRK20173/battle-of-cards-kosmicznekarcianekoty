@@ -5,7 +5,7 @@ namespace Card_Game
 {
     public abstract class Deck
     {
-        protected List<Card> Cards { get; set; }
+        public List<Card> Cards { get; set; }
         public bool IsEmpty()
         {
             if(Cards.Count < 1)
@@ -14,19 +14,19 @@ namespace Card_Game
             }
             return false;
         }
-        public void SortCards(List<Card> selectedCards, CardsAttributes attribute)
+        public void SortCards(CardsAttributes attribute)
         {
-            selectedCards.OrderBy(card => card[attribute]);
+            Cards.OrderBy(card => card[attribute]);
         }
-        public bool IsTie(List<Card> selectedCards, CardsAttributes attribute)
+        public bool IsTie(CardsAttributes attribute)
         {
-            var highestCard = GetHighestCard(selectedCards, attribute);
+            var highestCard = GetHighestCard(attribute);
             
-            return selectedCards[1][attribute] == highestCard[attribute];
+            return Cards[1][attribute] == highestCard[attribute];
         }
-        public Card GetHighestCard(List<Card> selectedCards, CardsAttributes attribute)
+        public Card GetHighestCard(CardsAttributes attribute)
         {
-            return selectedCards.OrderBy(card => card[attribute]).First();
+            return Cards.OrderBy(card => card[attribute]).First();
         }
         public void AddCardsToDeckBottom(List<Card> wonCards)
         {

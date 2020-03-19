@@ -77,6 +77,11 @@ namespace Card_Game
             }
         }
 
+        public Card GetActivePlayerCard()
+        {
+            return RoundDeck.Cards[0];
+        }
+
         private void SetCardsToPlay()
         {
             int cardsToRemove = tableDeck.Cards.Count % players.Count;

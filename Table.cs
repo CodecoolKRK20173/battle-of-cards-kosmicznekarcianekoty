@@ -1,5 +1,6 @@
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Card_Game
 {
@@ -145,14 +146,7 @@ namespace Card_Game
 
         public bool IsGameOver()
         {
-            foreach (Player player in players)
-            {
-                if (player.localDeck.IsEmpty())
-                {
-                    return true;
-                }
-            }
-            return false;
+            return players.Any(player => player.localDeck.IsEmpty());
         }
 
         public Player GetWinner()

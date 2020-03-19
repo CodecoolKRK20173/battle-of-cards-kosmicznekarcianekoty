@@ -8,15 +8,11 @@ namespace Card_Game
         public List<Card> Cards { get; internal set; } = new List<Card> ();
         public bool IsEmpty()
         {
-            if(Cards.Count < 1)
-            {
-                return true;
-            }
-            return false;
+            return Cards.Count < 1;
         }
         public void SortCards(CardsAttributes attribute)
         {
-            Cards.OrderBy(card => card[attribute]);
+            Cards = Cards.OrderBy(card => card[attribute]).ToList();
         }
         public bool IsTie(CardsAttributes attribute)
         {
@@ -30,10 +26,7 @@ namespace Card_Game
         }
         public void AddCardsToDeckBottom(List<Card> wonCards)
         {
-            foreach(var card in wonCards)
-            {
-                Cards.Insert(0, card);
-            }
+            Cards.AddRange(wonCards);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Card_Game
         }
         public void SortCards(CardsAttributes attribute)
         {
-            Cards = Cards.OrderBy(card => card[attribute]).ToList();
+            Cards = Cards.OrderByDescending(card => card[attribute]).ToList();
         }
         public bool IsTie(CardsAttributes attribute)
         {
@@ -22,7 +22,8 @@ namespace Card_Game
         }
         public Card GetHighestCard(CardsAttributes attribute)
         {
-            return Cards.OrderBy(card => card[attribute]).First();
+            SortCards(attribute);
+            return Cards[0];
         }
         public void AddCardsToDeckBottom(List<Card> wonCards)
         {

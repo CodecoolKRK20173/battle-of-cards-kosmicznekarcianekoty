@@ -38,6 +38,7 @@ namespace Card_Game
             string nameToPrint = $"{owners[card].Name}'s card:";
             PrintRowWithNoFrame(nameToPrint);
             PrintLine();
+            PrintRow($"ID: {card.ID}");
             PrintRow(card.Name);
             PrintLine();
             PrintRow("");

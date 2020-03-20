@@ -50,6 +50,7 @@ namespace Card_Game
             PrintRow("");
             PrintLine();
             Print(card.Description);
+            PrintEmptyLine();
         }
 
         public void PrintCards(List<Card> cards, Dictionary<Card, Player> owners)

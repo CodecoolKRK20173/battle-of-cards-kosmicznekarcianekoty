@@ -25,15 +25,15 @@ namespace Card_Game
                 Cards[k] = temp;
             }
         }
-        public List<Card> GetTopCards(int amount)
+        public Card GetTopCard()
         {
-            return (List<Card>)Cards.Skip(Cards.Count - amount);
+            return Cards[0];
         }
         public void RemoveTopCards(int amount)
         {
             for(int i=0; i<amount; i++)
             {
-                Cards.RemoveAt(Cards.Count -1);
+                Cards.RemoveAt(0);
             }
         }
 

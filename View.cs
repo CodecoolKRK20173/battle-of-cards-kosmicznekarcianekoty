@@ -16,31 +16,104 @@ namespace Card_Game
             Console.WriteLine(message);
         }
 
-        public void PrintDeck(TableDeck deckToPrint)
+        public void PrintDeck(TableDeck deckToPrint, Dictionary<Card, Player> owners)
         {
             foreach (Card card in deckToPrint.Cards)
             {
-                PrintCard(card);
+                PrintCard(card, owners);
             }
         }
 
-        public void PrintCard(Card card)
+        public void PrintAttributes()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                Print($"{i}. {(CardsAttributes)i-1}");
+            }
+        }
+
+        public void PrintCard(Card card, Dictionary<Card, Player> owners)
         {
             PrintEmptyLine();
-            string nameToPrint = $"{card.Owner.Name}'s card:";
+            string nameToPrint = $"{owners[card].Name}'s card:";
             PrintRowWithNoFrame(nameToPrint);
             PrintLine();
+            PrintRow($"ID: {card.ID}");
             PrintRow(card.Name);
             PrintLine();
             PrintRow("");
-            foreach (KeyValuePair<CardsAttributes, int> attribute in card.attributes)
+            foreach (CardsAttributes attribute in (CardsAttributes[])Enum.GetValues(typeof(CardsAttributes)))
             {
-                string textToPrint = $"{attribute.Key}: {attribute.Value}";
+                string textToPrint = $"{attribute}: {card[attribute]}";
                 PrintRow(textToPrint);
             }
             PrintRow("");
-            PrintRow(card.Description);
             PrintLine();
+            Print(card.Description);
+            PrintEmptyLine();
+        }
+
+        public void PrintCards(List<Card> cards, Dictionary<Card, Player> owners)
+        {
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                Console.Write($" {AlignCentre(owners[card].Name, cardWidth)} ");
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows($"ID: {card.ID}");
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(card.Name);
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(string.Empty);     
+            }
+            PrintEmptyLine();
+
+            foreach (CardsAttributes attribute in (CardsAttributes[])Enum.GetValues(typeof(CardsAttributes)))
+            {
+                foreach(var card in cards)
+                {
+                    PrintMultipleRows($"{attribute}: {card[attribute]}");
+                }
+                PrintEmptyLine();
+            }
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(string.Empty);     
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+            PrintEmptyLine();
         }
 
         private void PrintLine()
@@ -48,12 +121,22 @@ namespace Card_Game
             Console.Write(" ");
             Console.WriteLine(new string('-', cardWidth));
         }
+        private void PrintMultipleLines()
+        {
+            Console.Write($" {new string('-', cardWidth)} ");
+        }
 
         private void PrintRow(string text)
         {
             string row = "|";
             row += AlignCentre(text, cardWidth) + "|";
             Console.WriteLine(row);
+        }
+        private void PrintMultipleRows(string text)
+        {
+            string row = "|";
+            row += AlignCentre(text, cardWidth) + "|";
+            Console.Write(row);
         }
 
         private void PrintRowWithNoFrame(string text)
@@ -76,5 +159,7 @@ namespace Card_Game
                 return text.PadRight(cardWidth - (cardWidth - text.Length) / 2).PadLeft(cardWidth);
             }
         }
+
+
     }
 }

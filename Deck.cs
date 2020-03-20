@@ -5,18 +5,14 @@ namespace Card_Game
 {
     public abstract class Deck
     {
-        public List<Card> Cards { get; set; }
+        public List<Card> Cards { get; internal set; } = new List<Card> ();
         public bool IsEmpty()
         {
-            if(Cards.Count < 1)
-            {
-                return true;
-            }
-            return false;
+            return Cards.Count < 1;
         }
         public void SortCards(CardsAttributes attribute)
         {
-            Cards.OrderBy(card => card[attribute]);
+            Cards = Cards.OrderByDescending(card => card[attribute]).ToList();
         }
         public bool IsTie(CardsAttributes attribute)
         {
@@ -26,14 +22,12 @@ namespace Card_Game
         }
         public Card GetHighestCard(CardsAttributes attribute)
         {
-            return Cards.OrderBy(card => card[attribute]).First();
+            SortCards(attribute);
+            return Cards[0];
         }
         public void AddCardsToDeckBottom(List<Card> wonCards)
         {
-            foreach(var card in wonCards)
-            {
-                Cards.Insert(0, card);
-            }
+            Cards.AddRange(wonCards);
         }
     }
 }

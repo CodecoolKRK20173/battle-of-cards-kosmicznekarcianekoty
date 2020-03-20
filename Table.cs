@@ -6,21 +6,26 @@ namespace Card_Game
 {
     public class Table
     {
+        public Player RoundWinner { get; private set; }
+        public Dictionary<Card, Player> CardOwners { get; private set; } = new Dictionary<Card, Player>();
+        public TableDeck RoundDeck { get; private set; }
         private List<Player> players;
         private TableDeck tableDeck;
-        public TableDeck roundDeck { get; private set; }
         private TableDeck benchDeck;
-        private Player roundWinner;
-        private Dictionary<Card, Player> cardOwners;
-
 
         public Table(params string[] playersNames) // first inserted player will start the game
         {
             CreateTableDeck();
-            roundDeck = new TableDeck();
+            RoundDeck = new TableDeck();
             benchDeck = new TableDeck();
             CreatePlayers(playersNames);
             CreateCardOwners();
+            RoundWinner = players[0];
+        }
+
+        public bool IsTie()
+        {
+            return !benchDeck.IsEmpty();
         }
 
         private void CreateTableDeck()
@@ -35,7 +40,7 @@ namespace Card_Game
             string extension = Path.GetExtension(fileName);
             switch (extension)
             {
-                case "csv":
+                case ".csv":
                     return new CardsDAO();
                 default:
                     throw new FileNotFoundException("Not possible to upload cards.");
@@ -57,7 +62,7 @@ namespace Card_Game
         {
             foreach (Card card in tableDeck.Cards)
             {
-                cardOwners.Add(card, null);
+                CardOwners.Add(card, null);
             }
         }
         
@@ -69,12 +74,17 @@ namespace Card_Game
             {
                  foreach (Player player in players)
                  {
-                    List<Card> oneCardToDeal = tableDeck.GetTopCards(1);
-                    player.AddCardToPlayerCards(oneCardToDeal[0]);
-                    AssignOwnerToCard(player, oneCardToDeal[0]);
+                    Card oneCardToDeal = tableDeck.GetTopCard();
+                    player.AddCardToPlayerCards(oneCardToDeal);
+                    AssignOwnerToCard(player, oneCardToDeal);
                     tableDeck.RemoveTopCards(1);
                  }
             }
+        }
+
+        public Card GetActivePlayerCard()
+        {
+            return RoundDeck.Cards[0];
         }
 
         private void SetCardsToPlay()
@@ -85,27 +95,27 @@ namespace Card_Game
 
         public void EndOfRound(CardsAttributes chosenAttribute)
         {
-            if (roundDeck.IsTie(chosenAttribute))
+            if (RoundDeck.IsTie(chosenAttribute))
             {
-                CopyCardsToDeckFromDeck(benchDeck, roundDeck);
+                CopyCardsToDeckFromDeck(benchDeck, RoundDeck);
             }
             else
             {
-                Card highestCard = roundDeck.GetHighestCard(chosenAttribute);
-                AssignOwnerToCard(roundWinner, highestCard);
+                Card highestCard = RoundDeck.GetHighestCard(chosenAttribute);
+                RoundWinner = CardOwners[highestCard];
                 CopyCardsToWinnerDeck();
                 SetStartingPlayer();
             }
-            roundDeck.Cards.Clear();
+            RoundDeck.Cards.Clear();
         }
         
-        private void PlayersPlayCard()
+        public void PlayersPlayCard()
         {
             foreach (Player player in players)
             {
-                List<Card> oneCardToPlay = player.GetTopCardFromPlayerCards();
-                player.RemoveCardFromePlayerCards();
-                roundDeck.AddCardsToDeckBottom(oneCardToPlay);
+                List<Card> oneCardToPlay = new List<Card> { player.GetTopCardFromPlayerCards() };
+                player.RemoveCardFromPlayerCards();
+                RoundDeck.AddCardsToDeckBottom(oneCardToPlay);
             }
         }
 
@@ -116,31 +126,31 @@ namespace Card_Game
 
         private void CopyCardsToWinnerDeck()
         {
-            CopyCardsToDeckFromDeck(roundDeck, benchDeck);
-            AssignOwnerToDeckOfCards(roundWinner, roundDeck);
-            CopyCardsToDeckFromDeck(roundWinner.localDeck, roundDeck);
+            CopyCardsToDeckFromDeck(RoundDeck, benchDeck);
+            AssignOwnerToDeckOfCards(RoundWinner, RoundDeck);
+            CopyCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
         }
 
         private void AssignOwnerToCard(Player owner, Card card)
         {
-            cardOwners[card] = owner;
+            CardOwners[card] = owner;
         }
 
         private void AssignOwnerToDeckOfCards(Player owner, Deck deck)
         {
             foreach (Card card in deck.Cards)
             {
-                cardOwners[card] = owner;
+                AssignOwnerToCard(owner, card);
             }
         }
 
         private void SetStartingPlayer()
         {
-            if (roundWinner != players[0])
+            if (RoundWinner != players[0])
             {
-                int winnerIndex = players.IndexOf(roundWinner);
+                int winnerIndex = players.IndexOf(RoundWinner);
                 players.RemoveAt(winnerIndex);
-                players.Insert(0, roundWinner);
+                players.Insert(0, RoundWinner);
             }
         }
 

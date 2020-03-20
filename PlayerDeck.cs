@@ -6,11 +6,11 @@ namespace Card_Game
     {
         public Card GetTopCard()
         {
-            return Cards.Last();
+            return Cards[0];
         }
         public void RemoveTopCard()
         {
-            Cards.RemoveAt(Cards.Count -1);
+            Cards.RemoveAt(0);
         }
         public void AddCardToDeckBottom(Card card)
         {

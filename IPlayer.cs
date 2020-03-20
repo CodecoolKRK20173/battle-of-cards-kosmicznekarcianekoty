@@ -4,8 +4,8 @@ namespace Card_Game
     {
         string Name {get; set;}
         void AddCardToPlayerCards(Card SingleCard);
-        void RemoveCardFromePlayerCards();
-        void GetTopCardFromPlayerCards();
+        void RemoveCardFromPlayerCards();
+        Card GetTopCardFromPlayerCards();
         int GetNumberOfCardsInPlayersDeck();
     }
 }

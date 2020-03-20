@@ -23,6 +23,11 @@ namespace Card_Game
             RoundWinner = players[0];
         }
 
+        public bool IsTie()
+        {
+            return benchDeck.IsEmpty();
+        }
+
         private void CreateTableDeck()
         {
             string fileName = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory

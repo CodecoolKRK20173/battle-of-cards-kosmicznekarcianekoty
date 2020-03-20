@@ -36,7 +36,7 @@ namespace Card_Game
 
         public void PlayRound()
         {
-            view.Print($"Round: {rounds++}\nActive player: {gameTable.RoundWinner.Name}");
+            view.Print($"Round: {rounds++}\nActive player: {gameTable.RoundWinner.Name}\nNumber of cards: {gameTable.RoundWinner.localDeck.GetPlayerDeckCount()}");
             gameTable.PlayersPlayCard();
             view.PrintCard(gameTable.GetActivePlayerCard(), gameTable.CardOwners);
             view.Print("Please choose attribute to fight (1-4)");

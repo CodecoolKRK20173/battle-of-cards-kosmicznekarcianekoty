@@ -44,6 +44,7 @@ namespace Card_Game
             CardsAttributes attribute = GetAttribute();
             Console.Clear();
             view.Print($"{gameTable.RoundWinner.Name} plays {attribute}\nComparing cards...");
+            view.PrintCards(gameTable.RoundDeck.Cards, gameTable.CardOwners);
             gameTable.EndOfRound(attribute);
             if (gameTable.IsTie()) view.Print("There is a tie! The cards were moved to bench deck");
             else view.Print($"{gameTable.RoundWinner.Name} has won this round!");

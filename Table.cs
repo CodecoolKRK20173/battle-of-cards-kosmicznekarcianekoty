@@ -102,7 +102,7 @@ namespace Card_Game
             else
             {
                 Card highestCard = RoundDeck.GetHighestCard(chosenAttribute);
-                AssignOwnerToCard(RoundWinner, highestCard);
+                RoundWinner = CardOwners[highestCard];
                 CopyCardsToWinnerDeck();
                 SetStartingPlayer();
             }
@@ -140,7 +140,7 @@ namespace Card_Game
         {
             foreach (Card card in deck.Cards)
             {
-                CardOwners[card] = owner;
+                AssignOwnerToCard(owner, card);
             }
         }
 

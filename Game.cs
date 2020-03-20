@@ -42,6 +42,7 @@ namespace Card_Game
             view.Print("Please choose attribute to fight (1-4)");
             view.PrintAttributes();
             CardsAttributes attribute = GetAttribute();
+            Console.Clear();
             view.Print($"{gameTable.RoundWinner.Name} plays {attribute}\nComparing cards...");
             gameTable.EndOfRound(attribute);
             if (gameTable.IsTie()) view.Print("There is a tie! The cards were moved to bench deck");
@@ -54,7 +55,7 @@ namespace Card_Game
             {
                 PlayRound();
             }
-            view.Print("The game is over!");
+            view.Print($"The game is over!. {gameTable.GetWinner().Name} has won!");
         }
 
         private CardsAttributes GetAttribute()

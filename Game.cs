@@ -42,10 +42,22 @@ namespace Card_Game
             view.Print("Please choose attribute to fight (1-4)");
             view.PrintAttributes();
             CardsAttributes attribute = GetAttribute();
-            view.Print($"{gameTable.RoundWinner.Name} plays {attribute}");
+            view.Print($"{gameTable.RoundWinner.Name} plays {attribute}\nComparing cards...");
+            gameTable.EndOfRound(attribute);
+            if (gameTable.IsTie()) view.Print("There is a tie! The cards were moved to bench deck");
+            else view.Print($"{gameTable.RoundWinner.Name} has won this round!");
         }
 
-        public CardsAttributes GetAttribute()
+        public void PlayUntilEnd()
+        {
+            while (!gameTable.IsGameOver())
+            {
+                PlayRound();
+            }
+            view.Print("The game is over!");
+        }
+
+        private CardsAttributes GetAttribute()
         {
             int attributesNumber = Enum.GetNames(typeof(CardsAttributes)).Length + 1;
             bool correctInput = false;

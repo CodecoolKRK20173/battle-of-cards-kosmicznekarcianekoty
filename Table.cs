@@ -25,7 +25,7 @@ namespace Card_Game
 
         public bool IsTie()
         {
-            return benchDeck.IsEmpty();
+            return !benchDeck.IsEmpty();
         }
 
         private void CreateTableDeck()

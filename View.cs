@@ -52,11 +52,77 @@ namespace Card_Game
             Print(card.Description);
         }
 
+        public void PrintCards(List<Card> cards, Dictionary<Card, Player> owners)
+        {
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                Console.Write($" {AlignCentre(owners[card].Name, cardWidth)} ");
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows($"ID: {card.ID}");
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(card.Name);
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(string.Empty);     
+            }
+            PrintEmptyLine();
+
+            foreach (CardsAttributes attribute in (CardsAttributes[])Enum.GetValues(typeof(CardsAttributes)))
+            {
+                foreach(var card in cards)
+                {
+                    PrintMultipleRows($"{attribute}: {card[attribute]}");
+                }
+                PrintEmptyLine();
+            }
+
+            foreach(var card in cards)
+            {
+                PrintMultipleRows(string.Empty);     
+            }
+            PrintEmptyLine();
+
+            foreach(var card in cards)
+            {
+                PrintMultipleLines();
+            }
+            PrintEmptyLine();
+            PrintEmptyLine();
+        }
 
         private void PrintLine()
         {
             Console.Write(" ");
             Console.WriteLine(new string('-', cardWidth));
+        }
+        private void PrintMultipleLines()
+        {
+            Console.Write($" {new string('-', cardWidth)} ");
         }
 
         private void PrintRow(string text)
@@ -64,6 +130,12 @@ namespace Card_Game
             string row = "|";
             row += AlignCentre(text, cardWidth) + "|";
             Console.WriteLine(row);
+        }
+        private void PrintMultipleRows(string text)
+        {
+            string row = "|";
+            row += AlignCentre(text, cardWidth) + "|";
+            Console.Write(row);
         }
 
         private void PrintRowWithNoFrame(string text)

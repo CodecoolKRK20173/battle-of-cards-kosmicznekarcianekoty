@@ -41,7 +41,7 @@ namespace Card_Game
             switch (extension)
             {
                 case ".csv":
-                    return new CardsDAO();
+                    return new CardsDaoCsv();
                 default:
                     throw new FileNotFoundException("Not possible to upload cards.");
             }

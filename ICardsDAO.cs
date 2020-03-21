@@ -7,7 +7,7 @@ namespace Card_Game
     public interface ICardsDAO
     {
         public List<Card> GetCards();
-        public Card GetCardByID(int ID);
+        public Card GetCardByID(int id);
 
     }
 }

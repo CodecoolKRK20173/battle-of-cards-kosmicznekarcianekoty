@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Card_Game
 {
@@ -17,12 +15,12 @@ namespace Card_Game
         {
             Random rand = new Random();
 
-            for (int n = Cards.Count - 1; n > 0; --n)
+            for (int deckSize = Cards.Count - 1; deckSize > 0; --deckSize)
             {
-                int k = rand.Next(n+1);
-                Card temp = Cards[n];
-                Cards[n] = Cards[k];
-                Cards[k] = temp;
+                int randomIndex = rand.Next(deckSize+1);
+                Card currentCard = Cards[deckSize];
+                Cards[deckSize] = Cards[randomIndex];
+                Cards[randomIndex] = currentCard;
             }
         }
         public Card GetTopCard()
@@ -35,11 +33,6 @@ namespace Card_Game
             {
                 Cards.RemoveAt(0);
             }
-        }
-
-        public void ChangeCardsOwner(Player owner)
-        {
-            foreach (Card card in Cards) card.ChangeOwner(owner);
         }
     }
 }

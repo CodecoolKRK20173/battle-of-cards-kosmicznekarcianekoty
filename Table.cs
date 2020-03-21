@@ -87,7 +87,6 @@ namespace Card_Game
                 MoveCardsToWinnerDeck();
                 SetStartingPlayer();
             }
-            RoundDeck.Cards.Clear();
         }
         
         public void PlayersPlayCard()

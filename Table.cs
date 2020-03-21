@@ -78,13 +78,13 @@ namespace Card_Game
         {
             if (RoundDeck.IsTie(chosenAttribute))
             {
-                CopyCardsToDeckFromDeck(benchDeck, RoundDeck);
+                MoveCardsToDeckFromDeck(benchDeck, RoundDeck);
             }
             else
             {
                 Card highestCard = RoundDeck.GetHighestCard(chosenAttribute);
                 RoundWinner = CardOwners[highestCard];
-                CopyCardsToWinnerDeck();
+                MoveCardsToWinnerDeck();
                 SetStartingPlayer();
             }
             RoundDeck.Cards.Clear();
@@ -100,17 +100,17 @@ namespace Card_Game
             }
         }
 
-        private void CopyCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
+        private void MoveCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
         {
             toDeck.AddCardsToDeckBottom(fromDeck.Cards);
             fromDeck.Cards.Clear();
         }
 
-        private void CopyCardsToWinnerDeck()
+        private void MoveCardsToWinnerDeck()
         {
-            CopyCardsToDeckFromDeck(RoundDeck, benchDeck);
+            MoveCardsToDeckFromDeck(RoundDeck, benchDeck);
             AssignOwnerToDeckOfCards(RoundWinner, RoundDeck);
-            CopyCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
+            MoveCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
         }
 
         private void AssignOwnerToCard(Player owner, Card card)

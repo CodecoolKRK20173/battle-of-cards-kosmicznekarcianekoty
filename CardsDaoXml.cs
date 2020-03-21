@@ -50,16 +50,32 @@ namespace Card_Game
         {
             string name = "";
             string description = "";
-            List<int> attributes = new List<int>();
+            List<int> attributes = CreateInitialList();
 
             foreach (XmlNode element in card)
             {
                 if (element.Name == "name") name = element.InnerText;
                 if (element.Name == "description") description = element.InnerText;
-                if (element.Name == "attribute") attributes.Add(int.Parse(element.InnerText));
+                if (element.Name == "attribute")
+                {
+                    CardsAttributes attributeName = (CardsAttributes) Enum.Parse(typeof(CardsAttributes), element.Attributes["specialization"].Value);
+                    int index = (int)attributeName;
+                    int value = int.Parse(element.InnerText);
+                    attributes[index] = value;
+                }
             }
 
             return new Card(id, name, description, attributes);
+        }
+
+        private List<int> CreateInitialList()
+        {
+            List<int> attributes = new List<int>();
+            for (int i = 0; i < Enum.GetNames(typeof(CardsAttributes)).Length; i++)
+            {
+                attributes.Add(0);
+            }
+            return attributes;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Card_Game
 
         public Table(params string[] playersNames) // first inserted player will start the game
         {
-            CreateTableDeck();
+            tableDeck = new TableDeck(new CardsDaoXml());
             RoundDeck = new TableDeck();
             benchDeck = new TableDeck();
             CreatePlayers(playersNames);
@@ -26,27 +26,6 @@ namespace Card_Game
         public bool IsTie()
         {
             return !benchDeck.IsEmpty();
-        }
-
-        private void CreateTableDeck()
-        {
-            string fileName = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory
-            ICardsDAO fullDeck = GetProperDAO(fileName);
-            tableDeck = new TableDeck(fullDeck);
-        }
-
-        private ICardsDAO GetProperDAO(string fileName)
-        {
-            string extension = Path.GetExtension(fileName);
-            switch (extension)
-            {
-                case ".csv":
-                    return new CardsDaoCsv();
-                case ".xml":
-                    return new CardsDaoXml();
-                default:
-                    throw new FileNotFoundException("Not possible to upload cards.");
-            }
         }
 
         private void CreatePlayers(string[] playersNames)

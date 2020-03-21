@@ -42,6 +42,8 @@ namespace Card_Game
             {
                 case ".csv":
                     return new CardsDaoCsv();
+                case ".xml":
+                    return new CardsDaoXml();
                 default:
                     throw new FileNotFoundException("Not possible to upload cards.");
             }

@@ -6,7 +6,11 @@ namespace Card_Game
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game();
+            game.IntroducePlayers();
+            game.InitializeGame();
+            game.PlayUntilEnd();
+
         }
     }
 }

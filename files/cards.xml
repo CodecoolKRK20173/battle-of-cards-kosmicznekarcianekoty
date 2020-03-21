@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cards>
+    <card>
+        <name>Angel Kitty</name>
+        <description>Greet the world with an open heart</description>
+        <attribute specialization = "Fluffiness">68</attribute>
+        <attribute specialization = "Madness">32</attribute>
+        <attribute specialization = "Gluttony">16</attribute>
+        <attribute specialization = "Laziness">84</attribute>
+    </card>
+    <card>
+        <name>Azrael</name>
+        <description>[Azrael hacks and coughs] Gargamel: I'm sorry is my thinking interrupting your vile habit?</description>
+        <attribute specialization = "Fluffiness">23</attribute>
+        <attribute specialization = "Madness">89</attribute>
+        <attribute specialization = "Gluttony">78</attribute>
+        <attribute specialization = "Laziness">21</attribute>
+    </card>
+    <card>
+        <name>Bagheera</name>
+        <description>Everybody knew Bagheera and nobody cared to cross his path</description>
+        <attribute specialization = "Fluffiness">22</attribute>
+        <attribute specialization = "Madness">89</attribute>
+        <attribute specialization = "Gluttony">22</attribute>
+        <attribute specialization = "Laziness">96</attribute>
+    </card>
+    <card>
+        <name>Cannoli</name>
+        <description>You disrespect the Cat you disrespect the Family.</description>
+        <attribute specialization = "Fluffiness">12</attribute>
+        <attribute specialization = "Madness">32</attribute>
+        <attribute specialization = "Gluttony">72</attribute>
+        <attribute specialization = "Laziness">87</attribute>
+    </card>
+    <card>
+        <name>Cheshire Cat</name>
+        <description>I am not crazy. My reality is just different than yours</description>
+        <attribute specialization = "Fluffiness">45</attribute>
+        <attribute specialization = "Madness">67</attribute>
+        <attribute specialization = "Gluttony">21</attribute>
+        <attribute specialization = "Laziness">86</attribute>
+    </card>
+    <card>
+        <name>Felix the Cat</name>
+        <description>Ha! Ha!</description>
+        <attribute specialization = "Fluffiness">67</attribute>
+        <attribute specialization = "Madness">43</attribute>
+        <attribute specialization = "Gluttony">57</attribute>
+        <attribute specialization = "Laziness">74</attribute>
+    </card>
+    <card>
+        <name>Garfield</name>
+        <description>The most active thing about me is my imagination</description>
+        <attribute specialization = "Fluffiness">23</attribute>
+        <attribute specialization = "Madness">13</attribute>
+        <attribute specialization = "Gluttony">87</attribute>
+        <attribute specialization = "Laziness">77</attribute>
+    </card>
+    <card>
+        <name>Goose</name>
+        <description>*turns into a demonic monster and eats people*</description>
+        <attribute specialization = "Fluffiness">58</attribute>
+        <attribute specialization = "Madness">97</attribute>
+        <attribute specialization = "Gluttony">30</attribute>
+        <attribute specialization = "Laziness">15</attribute>
+    </card>
+    <card>
+        <name>Grumpy Cat</name>
+        <description>I had fun once. It was awful.</description>
+        <attribute specialization = "Fluffiness">44</attribute>
+        <attribute specialization = "Madness">87</attribute>
+        <attribute specialization = "Gluttony">14</attribute>
+        <attribute specialization = "Laziness">55</attribute>
+    </card>
+    <card>
+        <name>Hello Kitty</name>
+        <description>You are cute little princess. Keep smiling you are beautiful.</description>
+        <attribute specialization = "Fluffiness">66</attribute>
+        <attribute specialization = "Madness">66</attribute>
+        <attribute specialization = "Gluttony">66</attribute>
+        <attribute specialization = "Laziness">66</attribute>
+    </card>
+    <card>
+        <name>Keyboard Cat</name>
+        <description>Play �em off!</description>
+        <attribute specialization = "Fluffiness">76</attribute>
+        <attribute specialization = "Madness">45</attribute>
+        <attribute specialization = "Gluttony">87</attribute>
+        <attribute specialization = "Laziness">15</attribute>
+    </card>
+    <card>
+        <name>Laser Cat</name>
+        <description>Imma charging ma laser. Imma firin ma laser.</description>
+        <attribute specialization = "Fluffiness">57</attribute>
+        <attribute specialization = "Madness">43</attribute>
+        <attribute specialization = "Gluttony">14</attribute>
+        <attribute specialization = "Laziness">86</attribute>
+    </card>
+    <card>
+        <name>Lucifer</name>
+        <description>I was grumpy before Grumpy Cat.</description>
+        <attribute specialization = "Fluffiness">65</attribute>
+        <attribute specialization = "Madness">78</attribute>
+        <attribute specialization = "Gluttony">40</attribute>
+        <attribute specialization = "Laziness">21</attribute>
+    </card>
+    <card>
+        <name>Luna</name>
+        <description>Can�t you think of anything other than boys and food?</description>
+        <attribute specialization = "Fluffiness">45</attribute>
+        <attribute specialization = "Madness">32</attribute>
+        <attribute specialization = "Gluttony">31</attribute>
+        <attribute specialization = "Laziness">97</attribute>
+    </card>
+    <card>
+        <name>MAD Cat</name>
+        <description>Everyone has right to be stupid.</description>
+        <attribute specialization = "Fluffiness">70</attribute>
+        <attribute specialization = "Madness">92</attribute>
+        <attribute specialization = "Gluttony">26</attribute>
+        <attribute specialization = "Laziness">37</attribute>
+    </card>
+    <card>
+        <name>Maneki Neko</name>
+        <description>Have a lucky day!</description>
+        <attribute specialization = "Fluffiness">79</attribute>
+        <attribute specialization = "Madness">43</attribute>
+        <attribute specialization = "Gluttony">68</attribute>
+        <attribute specialization = "Laziness">59</attribute>
+    </card>
+    <card>
+        <name>Maru</name>
+        <description>Look at my leg. Look at it!</description>
+        <attribute specialization = "Fluffiness">74</attribute>
+        <attribute specialization = "Madness">87</attribute>
+        <attribute specialization = "Gluttony">27</attribute>
+        <attribute specialization = "Laziness">12</attribute>
+    </card>
+    <card>
+        <name>Meowth</name>
+        <description>It is what you do with the gift of life that determines who you are.</description>
+        <attribute specialization = "Fluffiness">56</attribute>
+        <attribute specialization = "Madness">36</attribute>
+        <attribute specialization = "Gluttony">88</attribute>
+        <attribute specialization = "Laziness">33</attribute>
+    </card>
+    <card>
+        <name>Mr. Jinx</name>
+        <description>Grill is ready!</description>
+        <attribute specialization = "Fluffiness">78</attribute>
+        <attribute specialization = "Madness">78</attribute>
+        <attribute specialization = "Gluttony">25</attribute>
+        <attribute specialization = "Laziness">43</attribute>
+    </card>
+    <card>
+        <name>Mrs. Norris</name>
+        <description>I am watching you.</description>
+        <attribute specialization = "Fluffiness">57</attribute>
+        <attribute specialization = "Madness">69</attribute>
+        <attribute specialization = "Gluttony">32</attribute>
+        <attribute specialization = "Laziness">74</attribute>
+    </card>
+    <card>
+        <name>Mufasa</name>
+        <description>There is more to being a king than getting your own way all the time.</description>
+        <attribute specialization = "Fluffiness">50</attribute>
+        <attribute specialization = "Madness">90</attribute>
+        <attribute specialization = "Gluttony">34</attribute>
+        <attribute specialization = "Laziness">63</attribute>
+    </card>
+    <card>
+        <name>Nyan Cat</name>
+        <description>Nyan nyan nyan nyan ni hao nyan!</description>
+        <attribute specialization = "Fluffiness">76</attribute>
+        <attribute specialization = "Madness">67</attribute>
+        <attribute specialization = "Gluttony">62</attribute>
+        <attribute specialization = "Laziness">19</attribute>
+    </card>
+    <card>
+        <name>O-Lion</name>
+        <description>Do you see these kitties looking at me?</description>
+        <attribute specialization = "Fluffiness">78</attribute>
+        <attribute specialization = "Madness">32</attribute>
+        <attribute specialization = "Gluttony">76</attribute>
+        <attribute specialization = "Laziness">56</attribute>
+    </card>
+    <card>
+        <name>Pusheen</name>
+        <description>Bitch please. I am adorable.</description>
+        <attribute specialization = "Fluffiness">99</attribute>
+        <attribute specialization = "Madness">23</attribute>
+        <attribute specialization = "Gluttony">21</attribute>
+        <attribute specialization = "Laziness">45</attribute>
+    </card>
+    <card>
+        <name>Puss in Boots</name>
+        <description>Today I repay my debt.</description>
+        <attribute specialization = "Fluffiness">55</attribute>
+        <attribute specialization = "Madness">76</attribute>
+        <attribute specialization = "Gluttony">86</attribute>
+        <attribute specialization = "Laziness">21</attribute>
+    </card>
+    <card>
+        <name>Salem Saberhagen</name>
+        <description>I urge you to accept me as your ruler.</description>
+        <attribute specialization = "Fluffiness">34</attribute>
+        <attribute specialization = "Madness">83</attribute>
+        <attribute specialization = "Gluttony">23</attribute>
+        <attribute specialization = "Laziness">65</attribute>
+    </card>
+    <card>
+        <name>Snowball</name>
+        <description>GLong live the hero cat of Springfield!</description>
+        <attribute specialization = "Fluffiness">35</attribute>
+        <attribute specialization = "Madness">67</attribute>
+        <attribute specialization = "Gluttony">21</attribute>
+        <attribute specialization = "Laziness">91</attribute>
+    </card>
+    <card>
+        <name>Space Cat</name>
+        <description>Houston we have a problem.</description>
+        <attribute specialization = "Fluffiness">32</attribute>
+        <attribute specialization = "Madness">76</attribute>
+        <attribute specialization = "Gluttony">76</attribute>
+        <attribute specialization = "Laziness">43</attribute>
+    </card>
+    <card>
+        <name>Tigger</name>
+        <description>Once in awhile someones amazing comes along� and here I am.</description>
+        <attribute specialization = "Fluffiness">32</attribute>
+        <attribute specialization = "Madness">98</attribute>
+        <attribute specialization = "Gluttony">38</attribute>
+        <attribute specialization = "Laziness">17</attribute>
+    </card>
+    <card>
+        <name>Tom</name>
+        <description>I will catch you!</description>
+        <attribute specialization = "Fluffiness">33</attribute>
+        <attribute specialization = "Madness">89</attribute>
+        <attribute specialization = "Gluttony">66</attribute>
+        <attribute specialization = "Laziness">56</attribute>
+    </card>
+    <card>
+        <name>Yzma</name>
+        <description>I'm not going to drop it you fool! I'm going to drink it! And once I turn back into my beautiful self I'm going to *kill* you.</description>
+        <attribute specialization = "Fluffiness">87</attribute>
+        <attribute specialization = "Madness">56</attribute>
+        <attribute specialization = "Gluttony">32</attribute>
+        <attribute specialization = "Laziness">24</attribute>
+    </card>
+</cards>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using System.Linq;
 
 
 namespace Card_Game
@@ -8,21 +9,32 @@ namespace Card_Game
     class CardsDaoXml : ICardsDAO
     {
 
-        private List<Card> cards = new List<Card>();
+        private List<Card> cards = null;
 
-        public Card GetCardByID(int ID)
+        private List<Card> Cards
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (cards == null)
+                    cards = LoadCards();
+                return cards;
+            }
+        }
+
+        public Card GetCardByID(int id)
+        {
+            return Cards.FirstOrDefault(x => x.ID == id);
         }
 
         public List<Card> GetCards()
         {
-            throw new NotImplementedException();
+            return Cards;
         }
 
-        public void LoadCards()
+        public List<Card> LoadCards()
         {
             string path = "files/cards.xml";
+            List<Card> cards = new List<Card>();
             XmlDocument file = new XmlDocument();
             file.Load(path);
             int id = 0;
@@ -30,6 +42,8 @@ namespace Card_Game
             {
                 cards.Add(LoadCardFromNode(node, id++));
             }
+
+            return cards;
         }
 
         private Card LoadCardFromNode(XmlNode card, int id)

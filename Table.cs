@@ -103,6 +103,7 @@ namespace Card_Game
         private void CopyCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
         {
             toDeck.AddCardsToDeckBottom(fromDeck.Cards);
+            fromDeck.Cards.Clear();
         }
 
         private void CopyCardsToWinnerDeck()

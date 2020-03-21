@@ -6,7 +6,6 @@ namespace Card_Game
 {
     public class Game
     {
-        public bool isRunning { get; private set; }
         private Table gameTable;
         private int minPlayers = 2;
         private int maxPlayers = 5;

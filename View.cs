@@ -6,7 +6,7 @@ namespace Card_Game
     public class View
     {
         private int cardWidth = 35;
-        public void PrintEmptyLine()
+        private void PrintEmptyLine() //zmiana na private
         {
             Console.WriteLine();
         }
@@ -14,14 +14,6 @@ namespace Card_Game
         public void Print(string message)
         {
             Console.WriteLine(message);
-        }
-
-        public void PrintDeck(TableDeck deckToPrint, Dictionary<Card, Player> owners)
-        {
-            foreach (Card card in deckToPrint.Cards)
-            {
-                PrintCard(card, owners);
-            }
         }
 
         public void PrintAttributes()

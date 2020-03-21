@@ -15,7 +15,7 @@ namespace Card_Game
 
         public Table(params string[] playersNames) // first inserted player will start the game
         {
-            CreateTableDeck();
+            tableDeck = new TableDeck(new CardsDaoXml());
             RoundDeck = new TableDeck();
             benchDeck = new TableDeck();
             CreatePlayers(playersNames);
@@ -26,25 +26,6 @@ namespace Card_Game
         public bool IsTie()
         {
             return !benchDeck.IsEmpty();
-        }
-
-        private void CreateTableDeck()
-        {
-            string fileName = Path.GetFileName(Directory.GetFiles("files")[0]); // DAO selected according to the only file in the "files" directory
-            ICardsDAO fullDeck = GetProperDAO(fileName);
-            tableDeck = new TableDeck(fullDeck);
-        }
-
-        private ICardsDAO GetProperDAO(string fileName)
-        {
-            string extension = Path.GetExtension(fileName);
-            switch (extension)
-            {
-                case ".csv":
-                    return new CardsDAO();
-                default:
-                    throw new FileNotFoundException("Not possible to upload cards.");
-            }
         }
 
         private void CreatePlayers(string[] playersNames)
@@ -97,16 +78,15 @@ namespace Card_Game
         {
             if (RoundDeck.IsTie(chosenAttribute))
             {
-                CopyCardsToDeckFromDeck(benchDeck, RoundDeck);
+                MoveCardsToDeckFromDeck(benchDeck, RoundDeck);
             }
             else
             {
                 Card highestCard = RoundDeck.GetHighestCard(chosenAttribute);
                 RoundWinner = CardOwners[highestCard];
-                CopyCardsToWinnerDeck();
+                MoveCardsToWinnerDeck();
                 SetStartingPlayer();
             }
-            RoundDeck.Cards.Clear();
         }
         
         public void PlayersPlayCard()
@@ -119,16 +99,17 @@ namespace Card_Game
             }
         }
 
-        private void CopyCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
+        private void MoveCardsToDeckFromDeck(Deck toDeck, Deck fromDeck)
         {
             toDeck.AddCardsToDeckBottom(fromDeck.Cards);
+            fromDeck.Cards.Clear();
         }
 
-        private void CopyCardsToWinnerDeck()
+        private void MoveCardsToWinnerDeck()
         {
-            CopyCardsToDeckFromDeck(RoundDeck, benchDeck);
+            MoveCardsToDeckFromDeck(RoundDeck, benchDeck);
             AssignOwnerToDeckOfCards(RoundWinner, RoundDeck);
-            CopyCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
+            MoveCardsToDeckFromDeck(RoundWinner.localDeck, RoundDeck);
         }
 
         private void AssignOwnerToCard(Player owner, Card card)
